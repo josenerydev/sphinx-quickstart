@@ -1,0 +1,9 @@
+docker run -it --rm -v ${PWD}:/docs sphinxdoc/sphinx sphinx-quickstart
+
+docker run --rm -v ${PWD}:/docs sphinxdoc/sphinx make html
+
+docker run --rm -v ${PWD}:/docs sphinxdoc/sphinx-latexpdf make latexpdf
+
+docker build -t sphinx-container .
+
+docker run -d --rm --name sphinx-site -p 8200:80 sphinx-container
