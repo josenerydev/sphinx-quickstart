@@ -2,6 +2,10 @@ FROM sphinxdoc/sphinx-latexpdf as build
 
 WORKDIR /app
 
+RUN apt-get -y update
+
+RUN apt-get -y install texlive-lang-portuguese
+
 COPY . .
 
 RUN pip3 install -r requirements.txt
